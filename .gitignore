@@ -1,0 +1,22 @@
+# Exclude build folder
+target/
+
+# Exclude eclipse specific files
+.classpath
+.project
+.settings/
+target-eclipse/
+
+# Exclude logs
+logs/
+*.log
+
+# Exclude Intellj specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+
+# Mac thumbnails
+.DS_Store
