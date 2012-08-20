@@ -1,5 +1,9 @@
 # Exclude build folder
 target/
+*.zip
+
+# Exclude generated plugin descriptor
+plugin.xml
 
 # Exclude eclipse specific files
 .classpath
