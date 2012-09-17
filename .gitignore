@@ -1,5 +1,6 @@
 # Exclude build folder
 target/
+out/
 *.zip
 
 # Exclude generated plugin descriptor

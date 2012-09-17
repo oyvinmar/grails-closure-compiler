@@ -1,3 +1,5 @@
+package org.grails.plugin.gccresources
+
 import org.grails.plugin.resource.mapper.MapperPhase
 import com.google.javascript.jscomp.Compiler
 import com.google.javascript.jscomp.CompilerOptions
