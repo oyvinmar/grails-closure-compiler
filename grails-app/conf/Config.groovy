@@ -22,3 +22,5 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+closurecompiler.compilation_level='SIMPLE_OPTIMIZATIONS'

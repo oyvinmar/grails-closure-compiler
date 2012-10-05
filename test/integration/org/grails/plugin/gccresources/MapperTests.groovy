@@ -19,4 +19,29 @@ class MapperTests extends GrailsUnitTestCase {
 
         r.processedFile.delete()
     }
+
+    void testCompilationLevels() {
+
+        def white = preformCompilationLevelTest('WHITESPACE_ONLY')
+        def simple = preformCompilationLevelTest('SIMPLE_OPTIMIZATIONS')
+        def advanced = preformCompilationLevelTest('ADVANCED_OPTIMIZATIONS')
+
+        assertTrue(advanced < simple && simple < white)
+    }
+
+    private def preformCompilationLevelTest(String level) {
+        def resourceMeta = new ResourceMeta()
+        def filePath = System.getProperty("user.dir") + '/web-app/js/test.js'
+        resourceMeta.processedFile = new File(filePath + '.copy.js') << new File(filePath).text
+        def conf = "closurecompiler.compilation_level = '${level}'"
+        mockConfig(conf)
+
+        GoogleClosureCompilerResourceMapper.newInstance().with {
+            map(resourceMeta, new ConfigObject())
+        }
+
+        def size = resourceMeta.processedFile.size()
+        resourceMeta.processedFile.delete()
+        return size
+    }
 }

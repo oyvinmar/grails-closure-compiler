@@ -7,6 +7,7 @@ import com.google.javascript.jscomp.JSSourceFile
 import com.google.javascript.jscomp.CompilationLevel
 import com.google.javascript.jscomp.Result
 import org.grails.plugin.resource.JavaScriptBundleResourceMeta
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class GoogleClosureCompilerResourceMapper {
     def phase = MapperPhase.COMPRESSION
@@ -23,7 +24,16 @@ class GoogleClosureCompilerResourceMapper {
         JSSourceFile extern = JSSourceFile.fromCode("/dev/null", "")
 
         CompilerOptions options = new CompilerOptions();
-        CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel(options);
+
+        def compilation_level = ConfigurationHolder.config.closurecompiler.compilation_level
+
+        if (compilation_level == 'WHITESPACE_ONLY') {
+            CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options)
+        } else if (compilation_level == 'ADVANCED_OPTIMIZATIONS') {
+            CompilationLevel.ADVANCED_OPTIMIZATIONS.setOptionsForCompilationLevel(options)
+        } else { //Defaults to simple
+            CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel(options)
+        }
 
         try {
             Compiler compiler = new Compiler();
