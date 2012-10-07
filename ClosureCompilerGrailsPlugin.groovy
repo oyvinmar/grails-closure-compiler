@@ -1,6 +1,6 @@
 class ClosureCompilerGrailsPlugin {
     // the plugin version
-    def version = "0.2"
+    def version = "0.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
     // the other plugins this plugin depends on
@@ -15,11 +15,15 @@ class ClosureCompilerGrailsPlugin {
     def author = "Øyvind Marthinsen"
     def authorEmail = ""
     def description = '''\
-The Closure Compiler compiles JavaScript into compact, high-performance code.
+This plugin compiles/optimizes your javascript resources with the Google Closure Compiler.
+
+It provides three compilation levels. WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS and ADVANCED_OPTIMIZATIONS.
+
+N.B. It builds/depends on the Grails Resources Plugin.
     '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/google-closure-compiler"
+    def documentation = "https://github.com/oyvinmar/grails-closure-compiler/blob/master/README.md"
 
     // Extra (optional) plugin metadata
 
