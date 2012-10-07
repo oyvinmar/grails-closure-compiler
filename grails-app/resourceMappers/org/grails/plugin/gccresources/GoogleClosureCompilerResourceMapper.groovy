@@ -26,13 +26,14 @@ class GoogleClosureCompilerResourceMapper {
         CompilerOptions options = new CompilerOptions();
 
         def compilation_level = ConfigurationHolder.config.closurecompiler.compilation_level
-
         if (compilation_level == 'WHITESPACE_ONLY') {
             CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options)
         } else if (compilation_level == 'ADVANCED_OPTIMIZATIONS') {
             CompilationLevel.ADVANCED_OPTIMIZATIONS.setOptionsForCompilationLevel(options)
-        } else { //Defaults to simple
+        } else if (compilation_level == 'SIMPLE_OPTIMIZATIONS') { //Defaults to simple
             CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel(options)
+        } else {
+            throw new Exception("Unkown compiler_level provided in config.")
         }
 
         try {
