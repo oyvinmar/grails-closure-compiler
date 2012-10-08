@@ -6,7 +6,7 @@ This plugin compiles/optimizes your javascript resources with the [Google Closur
 
 It provides three compilation levels. WHITESPACE_ONLY, SIMPLE_OPTIMIZATIONS and ADVANCED_OPTIMIZATIONS.
 
-N.B. It builds/depends on the Grails [Resources Plugin](http://www.grails.org/plugin/resources).
+N.B. It builds/depends on the [Grails Resources Plugin](http://www.grails.org/plugin/resources).
 
 ## Installation
 
@@ -27,8 +27,9 @@ The Google Closure compiler have three different compilation levels:
 * ADVANCED_OPTIMIZATIONS
 
 These can be configured with the variable:
+
     closurecompiler.compilation_level
 
 The default level is SIMPLE_OPTIMIZATIONS
 
-See the Google Closure Compiler [Docs] (https://developers.google.com/closure/compiler/docs/compilation_levels) for more information.
+See the [Google Closure Compiler Docs] (https://developers.google.com/closure/compiler/docs/compilation_levels) for more information.
