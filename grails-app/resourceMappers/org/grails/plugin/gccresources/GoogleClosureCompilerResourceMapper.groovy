@@ -7,10 +7,11 @@ import com.google.javascript.jscomp.JSSourceFile
 import com.google.javascript.jscomp.CompilationLevel
 import com.google.javascript.jscomp.Result
 import org.grails.plugin.resource.JavaScriptBundleResourceMeta
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class GoogleClosureCompilerResourceMapper {
     def phase = MapperPhase.COMPRESSION
+
+    def grailsApplication
 
     static defaultExcludes = ['**/*.min.js']
     static defaultIncludes = ['**/*.js']
@@ -25,7 +26,7 @@ class GoogleClosureCompilerResourceMapper {
 
         CompilerOptions options = new CompilerOptions();
 
-        def compilation_level = ConfigurationHolder.config.closurecompiler.compilation_level
+        def compilation_level = grailsApplication.config.closurecompiler.compilation_level
         if (compilation_level == 'WHITESPACE_ONLY') {
             CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options)
         } else if (compilation_level == 'ADVANCED_OPTIMIZATIONS') {

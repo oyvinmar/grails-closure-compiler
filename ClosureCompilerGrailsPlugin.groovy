@@ -44,9 +44,8 @@ N.B. It builds/depends on the Grails Resources Plugin.
     def scm = [ url: "https://github.com/oyvinmar/grails-closure-compiler" ]
 
     def doWithSpring = {
-        def config = ConfigurationHolder.getConfig()
-        if (!config.closurecompiler.compilation_level) {
-            config.closurecompiler.compilation_level= 'SIMPLE_OPTIMIZATIONS'
+        if (!application.config.closurecompiler.compilation_level) {
+            application.config.closurecompiler.compilation_level= 'SIMPLE_OPTIMIZATIONS'
         }
     }
 }

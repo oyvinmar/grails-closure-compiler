@@ -12,6 +12,7 @@ class MapperTests extends GrailsUnitTestCase {
         def before = r.processedFile.size()
 
         GoogleClosureCompilerResourceMapper.newInstance().with {
+            grailsApplication = [config : new ConfigSlurper().parse("closurecompiler.compilation_level = 'SIMPLE_OPTIMIZATIONS'")]
             map(r, new ConfigObject())
         }
 
@@ -34,9 +35,10 @@ class MapperTests extends GrailsUnitTestCase {
         def filePath = System.getProperty("user.dir") + '/web-app/js/test.js'
         resourceMeta.processedFile = new File(filePath + '.copy.js') << new File(filePath).text
         def conf = "closurecompiler.compilation_level = '${level}'"
-        mockConfig(conf)
+        def configObject = new ConfigSlurper().parse(conf)
 
         GoogleClosureCompilerResourceMapper.newInstance().with {
+            grailsApplication = [config : configObject]
             map(resourceMeta, new ConfigObject())
         }
 
