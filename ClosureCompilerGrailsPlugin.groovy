@@ -12,10 +12,9 @@ class ClosureCompilerGrailsPlugin {
         "grails-app/views/error.gsp"
     ]
 
-    // TODO Fill in these fields
     def title = "Google Closure Compiler Plugin" // Headline display name of the plugin
     def author = "Øyvind Marthinsen"
-    def authorEmail = ""
+    def authorEmail = "oyvinmar@gmail.com"
     def description = '''\
 This plugin compiles/optimizes your javascript resources with the Google Closure Compiler.
 
