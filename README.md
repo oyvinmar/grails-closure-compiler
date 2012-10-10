@@ -10,7 +10,7 @@ N.B. It builds/depends on the [Grails Resources Plugin](http://www.grails.org/pl
 
 ## Installation
 
-
+    grails install-plugin closure-compiler
 
 ## Usage
 
