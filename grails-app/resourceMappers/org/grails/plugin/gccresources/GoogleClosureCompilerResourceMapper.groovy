@@ -17,6 +17,10 @@ class GoogleClosureCompilerResourceMapper {
     static defaultIncludes = ['**/*.js']
 
     def map(resource, config) {
+        if (config.disable) {
+            return false
+        }
+
         if (resource instanceof JavaScriptBundleResourceMeta) {
             return false
         }
@@ -26,7 +30,18 @@ class GoogleClosureCompilerResourceMapper {
 
         CompilerOptions options = new CompilerOptions();
 
-        def compilation_level = grailsApplication.config.closurecompiler.compilation_level
+        config?.compilerOptions?.each { k, v ->
+            log.debug "Setting google closure compiler options: ${v} = ${k}"
+            options[k] = v
+        }
+
+        def resourceConfig = resource.tagAttributes?.size() ? resource.tagAttributes['googlecompiler'] : null
+        resourceConfig?.each { k, v ->
+            log.debug "Setting google closure compiler options: ${v} = ${k} on resource ${resource.id}"
+            options[k] = v
+        }
+
+        def compilation_level = config.compilation_level ?: 'SIMPLE_OPTIMIZATIONS'
         if (compilation_level == 'WHITESPACE_ONLY') {
             CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options)
         } else if (compilation_level == 'ADVANCED_OPTIMIZATIONS') {
