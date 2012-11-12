@@ -17,7 +17,6 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-        runtime "org.grails.plugins:resources:1.1.6"
         compile 'com.google.javascript:closure-compiler:r1918'
     }
 
