@@ -44,3 +44,12 @@ If you want specify compiler options for a single file, it can be done using the
 
     resource url: 'js/ember.js', attrs: [googlecompiler: [languageIn: CompilerOptions.LanguageMode.ECMASCRIPT5]]
 
+Disable the plugin for certain enviroments: 
+
+    environments {
+        development {
+            grails.resources.mappers.googleclosurecompiler.disable = true
+        }
+    }
+## 
+
