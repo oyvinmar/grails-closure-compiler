@@ -1,5 +1,3 @@
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
-
 class ClosureCompilerGrailsPlugin {
     // the plugin version
     def version = "0.9.1"
