@@ -12,7 +12,7 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        compile 'com.google.javascript:closure-compiler:r1918'
+        compile 'com.google.javascript:closure-compiler:v20131014'
     }
 
     plugins {
